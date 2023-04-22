@@ -24,21 +24,12 @@ def index():
     return render_template("index.html", active="index")
 
 
-@app.route("/enregistrer")
+@app.route("/enregistrer", methods=["GET", "POST"])
 def enregistrer():
+    if request.method == "POST":
+        print("yo")
     return render_template(
         "enregistrer.html", active="enregistrer", date=datetime.utcnow().date()
-    )
-
-@app.route("/enregistrer", methods=["POST"])
-def enregistrer_post():
-    workout_done = True if request.form.get("done_for_today") == "on" else False
-    comment = request.form.get("comment")
-    new_workout = models.Workout(workout_done=workout_done, comment=comment)
-    db.session.add(new_workout)
-    db.session.commit()
-    return render_template(
-        "index.html", active="index"
     )
 
 
