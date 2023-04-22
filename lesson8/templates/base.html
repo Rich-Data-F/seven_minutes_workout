@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		/* Style the navigation bar */
+		.navbar {
+			overflow: hidden;
+			background-color: #333;
+			position: fixed;
+			top: 0;
+			width: 100%;
+		}
+
+		/* Style the links inside the navigation bar */
+		.navbar a {
+			float: left;
+			display: block;
+			color: white;
+			text-align: center;
+			padding: 14px;
+			text-decoration: none;
+		}
+
+		/* Change the color of links on hover */
+		.navbar a:hover {
+			background-color: #ddd;
+			color: black;
+		}
+
+		/* Active link */
+		.active {
+			background-color: #4CAF50;
+			color: white;
+		}
+	</style>
+</head>
+<body style="padding-top: 35px;">
+	<!-- The navigation bar -->
+	<div class="navbar">
+		<a class="{% if active == 'index' %}active{% endif %}" href="/">Index</a>
+		<a class="{% if active == 'chaise' %}active{% endif %}" href="/chaise">Chaise</a>
+		<a class="{% if active == 'pompes' %}active{% endif %}" href="/pompes">Pompes</a>
+		<a class="{% if active == 'enregistrer' %}active{% endif %}" href="/enregistrer">Enregistrer un entrainement</a>
+	</div>
+	
+        {% block content %} {% endblock %}
+</body>
+</html>
