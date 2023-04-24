@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="col-md-4 col-md-offset-4">
+    <form method="POST" action="#">
+      <h2>Enregistrer un entrainement</h2>
+      <h3>{{ date }}</h3>
+      <div class="form-group">
+        <label for="done_for_today">Je me suis entrainé aujourd'hui</label>
+        <input
+          type="checkbox"
+          class="form-control"
+          id="done_for_today"
+          name="done_for_today"
+        />
+      </div>
+      <div class="form-group">
+        <label for="comment">Comment</label>
+        <input
+          type="text"
+          class="form-control"
+          id="comment"
+          name="comment"
+        />
+      </div>
+      <button type="submit" class="btn btn-primary">Sauvegarder l'entrainement</button>
+    </form>
+  </div>
+{% endblock %}
