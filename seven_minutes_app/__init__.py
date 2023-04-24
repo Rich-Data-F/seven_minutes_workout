@@ -1,7 +1,6 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, flash, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
-from .models import Workout
 
 
 db = SQLAlchemy()
@@ -30,6 +29,7 @@ def enregistrer():
         "enregistrer.html", active="enregistrer", date=datetime.utcnow().date()
     )
 
+
 @app.route("/enregistrer", methods=["POST"])
 def enregistrer_post():
     workout_done = True if request.form.get("done_for_today") == "on" else False
@@ -37,9 +37,8 @@ def enregistrer_post():
     new_workout = models.Workout(workout_done=workout_done, comment=comment)
     db.session.add(new_workout)
     db.session.commit()
-    return render_template(
-        "index.html", active="index"
-    )
+    flash(f"Votre entrainement a bien été enregistré !")
+    return redirect(url_for("index"))
 
 
 @app.route("/chaise")

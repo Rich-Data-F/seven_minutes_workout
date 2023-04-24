@@ -4,4 +4,13 @@
 <div>
 <h1>Bienvenue sur 7 minutes workout</h1>
 </div>
+{% with messages = get_flashed_messages() %}
+{% if messages %}
+<ul>
+    {% for message in messages %}
+    <li>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
 {% endblock %}
