@@ -28,7 +28,7 @@ def create_app():
     @app.route("/enregistrer")
     def enregistrer():
         return render_template(
-            "enregistrer.html", active="enregistrer", date=datetime.utcnow().date()
+            "enregistrer.html", active="enregistrer", date=datetime.now().date() #utcnow().date()
         )
 
 
